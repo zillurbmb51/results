@@ -1,5 +1,6 @@
 import pandas as pd #Import libraries
 import numpy as np
+import seaborn as sns
 o11=pd.read_csv("Orthogroups.csv",sep='\t',index_col=0) #Load the data
 idg=pd.read_csv("id_to_go.csv") #Mapping table generated from bioconductor database
 o11['Pfalciparum3D7'].isnull().values.sum() #Count number of missing data in a column
@@ -26,3 +27,5 @@ gc4['pathway']=gc4['path'].map(d17)
 gc5=gc4.drop(['orthogroups','go','path'],axis=1) 
 gc6=gc5.groupby(['pathway']).sum() #Tidy data for next step of analysis
 gc6.to_csv("pathway_count.csv")
+sns.clustermap(gc6,cmap="nipy_spectral_r") #Hierarchical clustering
+plt.savefig("pathway_cluster.svg",bbox_inches='tight')
