@@ -25,4 +25,4 @@ d17=dict(zip(kegg2.path,kegg2.pathway))
 gc4['pathway']=gc4['path'].map(d17)
 gc5=gc4.drop(['orthogroups','go','path'],axis=1) 
 gc6=gc5.groupby(['pathway']).sum() #Tidy data for next step of analysis
-gc6.to_csv("gene_count_pathway.csv")
+gc6.to_csv("pathway_count.csv")
