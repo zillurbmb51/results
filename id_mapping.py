@@ -17,11 +17,12 @@ gc3=gc2[pd.notnull(gc2['go'])]
 gtp=pd.read_csv("go_to_path.csv") #Load the corresponding GO IDs and K number dataframe
 gtp2=gtp[pd.notnull(gtp["PATH"])]
 d15=dict(zip(gtp2.GO,gtp2.PATH))
-gc3["path"]=gc3["go"].map(d15)
-gc4=gc3[pd.notnull(gc3["path"])]
+gc3['path']=gc3['go'].map(d15)
+gc4=gc3[pd.notnull(gc3['path'])]
 kegg=pd.read_csv("kegg_4.csv") #Load the K number and pathway name
 kegg.columns=['path','pathway'] #Naming columns
 kegg['pathway']=kegg['pathway'].map(str.strip) #remove extra white spaces from strings
+kegg2=kegg[pd.notnull(kegg['path'])
 d17=dict(zip(kegg2.path,kegg2.pathway))
 gc4['pathway']=gc4['path'].map(d17)
 gc5=gc4.drop(['orthogroups','go','path'],axis=1) 
