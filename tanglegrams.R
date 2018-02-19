@@ -1,9 +1,20 @@
 library(dendextend)
-d1=read.csv("phylogenomic_distance.csv")
-d2=read.csv("Orthogroups_SpeciesOverlaps.csv",sep='\t',row.names=1)
-h1=hclust(dist(d1)) #Hierarchical cluster 
-h2=hclust(dist(d2))
-dn11=dendlist(h1,h2) #List of to cluster
-svg("figure_4.svg")
-dn11 %>% untangle(method='step2side') %>%  tanglegram(common_subtrees_color_branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement(dn11), 2)),main_left='Phylogenomic',main_right='Orthogroups',margin_outer=3,sort=F,highlight_distinct_edges  = T, highlight_branches_lwd = T)
+phyl1=read.csv("mega/d3.csv",row.names=1,header=F) #Phylogenomic distance from mega
+phyl1[is.na(phyl1)]<-0 #Replace NA with 0
+dphylo=as.dendrogram(hclust(dist(phyl1))) #Create dendrogram of hierarchical cluster
+ortho=read.csv("Orthogroups_SpeciesOverlaps.csv",sep='\t',row.names=1)
+dortho=as.dendrogram(hclust(dist(ortho)))
+path=read.csv("pathway_count.csv",row.names=1)
+dpath=as.dendrogram(hclust(dist(t(path))))
+dphylortho=dendlist(dphylo,dortho) #Create dendrogram list
+dpathortho=dendlist(dpath,dortho)
+dphylopath=dendlist(dphylo,dpath)
+svg("tangle_phylo_ortho.svg") #Plot the tangle gram
+dphylortho %>% untangle(method='step2side') %>% tanglegram(common_subtrees_col> _branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement> phylortho), 2)),main_left='Phylogenomic',main_right='Orthogroups',margin_outer> ,sort=F,highlight_distinct_edges = T, highlight_branches_lwd = T)
+dev.off()
+svg("tangle_path_ortho.svg")
+dpathortho %>% untangle(method='step2side') %>% tanglegram(common_subtrees_col> _branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement> pathortho), 2)),main_left='Pathway',main_right='Orthogroups',margin_outer=3,so> =F,highlight_distinct_edges = T, highlight_branches_lwd = T)
+dev.off()
+svg("tangle_phylo_path.svg")
+dphylopath %>% untangle(method='step2side') %>% tanglegram(common_subtrees_col> _branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement> phylopath), 2)),main_left='Phylogenomic',main_right='Pathway',margin_outer=3,s> t=F,highlight_distinct_edges = T, highlight_branches_lwd = T)
 dev.off()
