@@ -18,3 +18,11 @@ dev.off()
 svg("tangle_phylo_path.svg")
 dphylopath %>% untangle(method='step2side') %>% tanglegram(common_subtrees_color_branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement(phylopath), 2)),main_left='Phylogenomic',main_right='Pathway',margin_outer=3,sort=F,highlight_distinct_edges = T, highlight_branches_lwd = T)
 dev.off()
+#Statistical relationships among dendrograms
+all.equal(dphylortho)
+all.equal(dphylopath)
+all.equal(dpathortho)
+cor_bakers_gamma(dphylortho)
+cor_bakers_gamma(dphylopath)
+cor_bakers_gamma(dpathortho)
+
