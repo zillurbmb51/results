@@ -1,9 +1,9 @@
 library(dendextend)
 d1=read.csv("phylogenomic_distance.csv")
-d2=read.csv("Orthogroups_SpeciesOverlaps.csv")
-h1=hclust(dist(d1))
+d2=read.csv("Orthogroups_SpeciesOverlaps.csv",sep='\t',row.names=1)
+h1=hclust(dist(d1)) #Hierarchical cluster 
 h2=hclust(dist(d2))
-dn11=c(h1,h2)
+dn11=c(h1,h2) #List of to cluster
 svg("figure_4.svg")
 dn11 %>% untangle(method='step2side') %>%  tanglegram(common_subtrees_color_branche = T,margin_inner=10,main = paste("entanglement =", round(entanglement(dn11), 2)),main_left='Phylogenomic',main_right='Orthogroups',margin_outer=3,sort=F,highlight_distinct_edges  = T, highlight_branches_lwd = T)
 dev.off()
