@@ -3,6 +3,7 @@ a2=read.csv("Statistics_Overall.csv",skip=46,nrows=43,header=T,row.names=1)
 png("figure_1.png",width=800,height=700,res=111)
 m1 <- matrix(c(1, 1, 2, 3, 4, 5), nrow = 2, byrow = TRUE) #Matrix tamplate for 5 grpahs
 layout(m1)
+#Make the barplot with texts and legends
 b11=barplot(a2$Number.of.orthogroups,xpd=T,xlab="Number of species in orthogroup",names=1:43,space=0.5,col=c('grey','yellow','pink'),las=2) 
 text(b11,a2$Number.of.orthogroups,srt=90,xpd=T,col='black',format(a2$Number.of.orthogroups))
 title("Number of orthogroups in all species",adj=0.5,line=-3,sub="A") 
