@@ -1,10 +1,10 @@
-import pandas as pd
+import pandas as pd  #Load the libraries
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-st=pd.read_csv("Statistics_PerSpecies.csv",index_col=0)
+st=pd.read_csv("Statistics_PerSpecies.csv",index_col=0)  #Load data
 sns.heatmap(s4,annot=True,cmap='Set3',fmt="",linewidths=0.1,robust=True,annot_kws={"size":6,"rotation":'vertical'},alpha=1.0)
-plt.savefig("all_stat_heat_fin_1.png",bbox_inches='tight')
+plt.savefig("all_stat_heat_fin_1.png",bbox_inches='tight') #make a heatmap and save it
 
 sp=pd.read_csv("Orthogroups_SpeciesOverlaps.csv",sep="\t",index_col=0)
 
