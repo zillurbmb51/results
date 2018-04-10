@@ -22,7 +22,7 @@ gc4=gc3[pd.notnull(gc3['path'])]
 kegg=pd.read_csv("kegg_4.csv") #Load the K number and pathway name
 kegg.columns=['path','pathway'] #Naming columns
 kegg['pathway']=kegg['pathway'].map(str.strip) #remove extra white spaces from strings
-kegg2=kegg[pd.notnull(kegg['path'])
+kegg2=kegg[pd.notnull(kegg['path'])]
 d17=dict(zip(kegg2.path,kegg2.pathway))
 gc4['pathway']=gc4['path'].map(d17)
 gc5=gc4.drop(['orthogroups','go','path'],axis=1) 
