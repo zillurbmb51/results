@@ -1,3 +1,4 @@
+#This script will extract desired ids from database
 source("http://bioconductor.org/biocLite.R") #Load bioconductor
 biocLite("org.Pf.plasmo.db") #Install the p. falciparum databse
 library(org.Pf.plasmo.db) #Load the database
