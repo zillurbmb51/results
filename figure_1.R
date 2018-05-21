@@ -1,6 +1,7 @@
-a1=read.csv("Statistics_Overall_2.csv",skip=24,nrows=14,row.names=1)
+#This script will plot statistical outputs as bars
+a1=read.csv("Statistics_Overall_2.csv",skip=24,nrows=14,row.names=1) #Load the data
 a2=read.csv("Statistics_Overall.csv",skip=46,nrows=43,header=T,row.names=1)
-png("figure_1.png",width=800,height=700,res=111)
+png("figure_1.png",width=800,height=700,res=111) #Create a file 
 m1 <- matrix(c(1, 1, 2, 3, 4, 5), nrow = 2, byrow = TRUE) #Matrix tamplate for 5 grpahs
 layout(m1)
 #Make the barplot with texts and legends
