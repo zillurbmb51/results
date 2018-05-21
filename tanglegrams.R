@@ -1,3 +1,4 @@
+#This script will compare two dendrograms and find statistical differences
 library(dendextend)
 phyl1=read.csv("mega/d3.csv",row.names=1,header=F) #Phylogenomic distance from mega
 phyl1[is.na(phyl1)]<-0 #Replace NA with 0
