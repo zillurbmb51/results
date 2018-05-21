@@ -1,3 +1,4 @@
+#This script will map different types of id from a mapping table
 import pandas as pd #Import libraries
 import numpy as np
 import seaborn as sns
